@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState, useRef, useEffect } from 'react'
+import RecipeList from './components/RecipeList';
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
@@ -38,6 +39,11 @@ function App() {
     recipeNameRef.current.value = null
   }
 
+  function removeRecipe(id) {
+    const newRecipes = recipes.filter(recipe => recipe.id !== id)
+    setRecipes(newRecipes)
+  }
+
   function handleKeyPress(event) {
     if (event.keyCode === 13 || event.which === 13) {
       handleAddRecipe()
@@ -66,7 +72,14 @@ function App() {
               > Add</button>
             </span>
           </div>
-
+          <div >
+          <div className='container'>
+            <RecipeList
+              recipes={recipes}
+              removeRecipe={removeRecipe}
+            />
+            </div>
+        </div>
         </div>
       </div>
     </>
