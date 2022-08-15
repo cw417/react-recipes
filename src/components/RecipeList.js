@@ -8,6 +8,7 @@ export default function RecipeList({ recipes, removeRecipe }) {
         <Recipe
           key={recipe.id}
           recipe={recipe}
+          removeRecipe={removeRecipe}
         />
       )
     })
