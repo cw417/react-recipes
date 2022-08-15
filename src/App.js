@@ -20,10 +20,56 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes))
   }, [recipes])
   
+  function handleAddRecipe() {
+    const name = recipeNameRef.current.value
+    if (name === '') return
+    setRecipes(prev => {
+      return [...prev, 
+        { 
+          id: uuidv4(), 
+          name: name, 
+          ingredients: [], 
+          selected: false,
+          editing: false
+        }
+      ]
+    })
+    console.log(`added ${name} to recipes`)
+    recipeNameRef.current.value = null
+  }
+
+  function handleKeyPress(event) {
+    if (event.keyCode === 13 || event.which === 13) {
+      handleAddRecipe()
+    }
+  }
+
+
   return (
-    <div className="App">
-      Recipe App
-    </div>
+    <>
+      <div className='container--app'>
+        <div className='container container--header'>
+          <div className='container--header__title'>
+            Recipes
+          </div>
+          
+          <div className='container--header__addRecipe'>
+            <input 
+              placeholder='Recipe Name' 
+              type='text'
+              ref={recipeNameRef} 
+              onKeyPress={handleKeyPress}
+            />
+            <span className='pad-left' >
+              <button 
+                onClick={handleAddRecipe}
+              > Add</button>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </>
   );
 }
 
