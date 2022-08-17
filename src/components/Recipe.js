@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import RecipeInfo from './RecipeInfo'
 
-export default function Recipe({ recipe, removeRecipe }) {
+export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngredient }) {
 
   const [ display, setDisplay ] = useState('none')
   
@@ -29,7 +30,13 @@ export default function Recipe({ recipe, removeRecipe }) {
         <span className='pad-left'>
           <button onClick={handleRemoveRecipe}>x</button>
         </span>
-
+        <div style={{display:display}}>
+          <RecipeInfo
+            recipe={recipe} 
+            addIngredient={addIngredient}
+            removeIngredient={removeIngredient}
+          />
+        </div>
       </div>
       <br style={{display:display}} />
     </div>

@@ -22,3 +22,21 @@ body {
   font-size: 3em;
   margin-bottom: 0.5em;
 }
+
+.container--ingredients {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.pad-left {
+  padding-left: 0.5em;
+}
+
+.input--ingredientAmount {
+  width: 4em;
+}
+
+.span--amount {
+  width: 6em;
+}

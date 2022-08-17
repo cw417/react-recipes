@@ -50,6 +50,23 @@ function App() {
     }
   }
 
+  function addIngredient(id, name, amount) {
+    // used in RecipeInfo component
+    const newRecipes = [...recipes]
+    const recipe = newRecipes.find(recipe => recipe.id === id)
+    const newIngredient = {id: uuidv4(), name: name, amount: amount}
+    recipe.ingredients.push(newIngredient)
+    setRecipes(newRecipes)
+    console.log(`${newIngredient.name} added to ${recipe.name}`)
+  }
+
+  function removeIngredient(recipeId, ingredientId) {
+    const newRecipes = [...recipes]
+    const recipe = newRecipes.find(recipe => recipe.id === recipeId)
+    recipe.ingredients = recipe.ingredients.filter(ingredient => ingredient.id !== ingredientId)
+    setRecipes(newRecipes)
+  }
+
 
   return (
     <>
@@ -77,6 +94,8 @@ function App() {
             <RecipeList
               recipes={recipes}
               removeRecipe={removeRecipe}
+              addIngredient={addIngredient}
+              removeIngredient={removeIngredient}
             />
             </div>
         </div>
