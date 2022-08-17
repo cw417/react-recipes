@@ -5,7 +5,21 @@ import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   
-  const [recipes, setRecipes] = useState([])
+  const [recipes, setRecipes] = useState([
+    {id: uuidv4(), name: "Caprese salad", ingredients: [ 
+      // ingredients stores objects with {id, name, amount} keys
+      {id: uuidv4(), name: "Tomatoes", amount: "2, sliced"},
+      {id: uuidv4(), name: "Mozzarella, fresh", amount: "4 slices"},
+      {id: uuidv4(), name: "Basil, fresh", amount: "8 leaves"},
+      {id: uuidv4(), name: "Olive oil", amount: "drizzle"},
+      {id: uuidv4(), name: "Salt/pepper", amount: "to taste"},
+      ], selected: false, editing: false},
+    {id: uuidv4(), name: "Strawberry Banana Smoothie", ingredients: [ 
+      {id: uuidv4(), name: "Bananas", amount: "2, peeled"},
+      {id: uuidv4(), name: "Strawberries", amount: "1/2 C"},
+      {id: uuidv4(), name: "Milk", amount: "6oz"},
+      ], selected: false, editing: false},
+  ])
   const [prevRecipes, setPrevRecipes] = useState([])
   const recipeNameRef = useRef()
   const searchRef = useRef()
@@ -29,7 +43,7 @@ function App() {
         { 
           id: uuidv4(), 
           name: name, 
-          ingredients: [], 
+          ingredients: [],
           selected: false,
           editing: false
         }
