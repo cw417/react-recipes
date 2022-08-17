@@ -41,7 +41,13 @@ function App() {
 
   function removeRecipe(id) {
     const newRecipes = recipes.filter(recipe => recipe.id !== id)
+    setPrevRecipes(recipes)
     setRecipes(newRecipes)
+  }
+  
+  function handleClearAll() {
+    setPrevRecipes(recipes)
+    setRecipes([])
   }
 
   function handleKeyPress(event) {
@@ -67,6 +73,30 @@ function App() {
     setRecipes(newRecipes)
   }
 
+  function searchIngredients(query, recipe) {
+    setPrevRecipes(recipes)
+    let found = false
+    recipe.ingredients.forEach(ingredient => {
+      console.log(`searching for ${query} in ${recipe.name}`)
+      if (ingredient.name.toLowerCase().includes(query)) {
+        found = true
+      }
+    })
+    return found
+  }
+
+  function handleSearch() {
+    const query = searchRef.current.value.toLowerCase()
+    const searchResults = recipes.filter(recipe => 
+      recipe.name.toLowerCase().includes(query) || searchIngredients(query, recipe))
+    setRecipes(searchResults)
+    searchRef.current.value = null
+  }
+
+  function handleReturn() {
+    // returns recipes list to previous state after search filter
+    setRecipes(prevRecipes)
+  }
 
   return (
     <>
@@ -89,7 +119,20 @@ function App() {
               > Add</button>
             </span>
           </div>
-          <div >
+          <div>
+            <input type='text' placeholder='Search' ref={searchRef} />
+            <span className='pad-left'>
+              <button onClick={handleSearch}>Search</button>
+            </span>
+          </div>
+
+          <div>
+            <button onClick={handleReturn} >Return</button>
+            <button onClick={handleClearAll}>Clear All</button>
+          </div>
+        </div>
+
+        <div >
           <div className='container'>
             <RecipeList
               recipes={recipes}
@@ -97,8 +140,7 @@ function App() {
               addIngredient={addIngredient}
               removeIngredient={removeIngredient}
             />
-            </div>
-        </div>
+          </div>
         </div>
       </div>
     </>
