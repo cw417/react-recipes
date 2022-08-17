@@ -8,6 +8,9 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient }) 
   const ingredientAmount = useRef()
   
   function handleEdit() {
+    /**
+     * Toggles display of the 'add ingredient' element on/off.
+     */
     if (display === 'none') {
       setDisplay('block')
       console.log('editing ingredients for ' + recipe.name)
@@ -21,6 +24,9 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient }) 
   }
 
   function handleAddIngredient() {
+    /**
+     * Calls 'addIngredient' to add a new ingredient object to the 'ingredients' array for a given recipe id.
+     */
     const name = ingredientName.current.value
     const amount = ingredientAmount.current.value
     console.log( `adding ${amount} ${name} to ${recipe.name}`)
@@ -30,6 +36,11 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient }) 
   }
 
   function handleKeyPress(event) {
+    /**
+     * Calls 'handleAddIngredient' when 'Enter' key is pressed.
+     * The keycode for 'Enter' is 13.
+     * @param event  Keypress event watching for 'Enter' key.
+     */
     if (event.keyCode === 13 || event.which === 13) {
       handleAddIngredient()
     }

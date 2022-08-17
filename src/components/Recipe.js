@@ -6,6 +6,9 @@ export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngr
   const [ display, setDisplay ] = useState('none')
   
   function handleSelect() {
+    /**
+     * Toggles display of the RecipeInfo component on/off.
+     */
     if (display === 'none') {
       setDisplay('block')
       console.log('selected ' + recipe.name)
@@ -16,6 +19,9 @@ export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngr
   }
 
   function handleRemoveRecipe() {
+    /**
+     * Calls 'removeRecipe' to remove the recipe from 'recipes' array based on id.
+     */
     removeRecipe(recipe.id)
     console.log(`removing ${recipe.name}`)
   }
