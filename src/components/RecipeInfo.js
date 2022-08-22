@@ -1,6 +1,7 @@
 import React, { useState, useRef} from 'react'
 import IngredientsList from './IngredientsList'
 import InstructionsList from './InstructionsList'
+import { FiEdit2 } from "react-icons/fi";
 
 export default function RecipeInfo({ recipe, addIngredient, removeIngredient, addInstruction, removeInstruction }) {
 
@@ -60,7 +61,7 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient, ad
 
   return (
   <>
-    <button onClick={handleEdit} >Edit</button>
+    <button onClick={handleEdit}><FiEdit2 /></button>
     <div className='large-font'>Ingredients</div>
     <IngredientsList 
       recipe={recipe}

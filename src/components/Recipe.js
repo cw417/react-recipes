@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import RecipeInfo from './RecipeInfo'
+import { FiX } from "react-icons/fi";
 
 export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngredient, addInstruction, removeInstruction }) {
 
@@ -39,7 +40,7 @@ export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngr
           <input type='checkbox' onClick={handleSelect} />
         </span>
         <span className='pad-left'>
-          <button onClick={handleRemoveRecipe}>x</button>
+          <button onClick={handleRemoveRecipe}><FiX /></button>
         </span>
         <div style={{display:display}}>
           <RecipeInfo

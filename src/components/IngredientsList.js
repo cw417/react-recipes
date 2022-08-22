@@ -1,4 +1,5 @@
 import React from 'react'
+import { FiMinus } from "react-icons/fi";
 
 export default function IngredientsList({ recipe, removeIngredient}) {
 
@@ -23,7 +24,7 @@ export default function IngredientsList({ recipe, removeIngredient}) {
             <span className='pad-left'>
               <button 
                 onClick={() => handleRemoveIngredient(recipe.id, ingredient.id)}
-              >-</button>
+              ><FiMinus /></button>
             </span>
           </div>
         </div>

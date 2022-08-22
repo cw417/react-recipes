@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useRef, useEffect } from 'react'
 import RecipeList from './components/RecipeList';
 import { v4 as uuidv4 } from 'uuid';
+import { FiPlus, FiSearch, FiRepeat, FiTrash2 } from "react-icons/fi";
 
 function App() {
   
@@ -248,19 +249,19 @@ function App() {
             <span className='pad-left' >
               <button 
                 onClick={handleAddRecipe}
-              > Add</button>
+              > <FiPlus /> </button>
             </span>
           </div>
           <div>
             <input type='text' placeholder='Search' ref={searchRef} />
             <span className='pad-left'>
-              <button onClick={handleSearch}>Search</button>
+              <button onClick={handleSearch}><FiSearch /></button>
             </span>
           </div>
 
           <div>
-            <button onClick={handleRestore}>Restore</button>
-            <button onClick={handleClearAll}>Clear All</button>
+            <button onClick={handleRestore}><FiRepeat /></button>
+            <button onClick={handleClearAll}><FiTrash2 /></button>
           </div>
         </div>
 
