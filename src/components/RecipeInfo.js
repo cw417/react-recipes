@@ -2,24 +2,26 @@ import React, { useState, useRef} from 'react'
 import IngredientsList from './IngredientsList'
 import InstructionsList from './InstructionsList'
 
-export default function RecipeInfo({ recipe, addIngredient, removeIngredient }) {
+export default function RecipeInfo({ recipe, addIngredient, removeIngredient, addInstruction, removeInstruction }) {
 
   const [ display, setDisplay ] = useState('none')
   const ingredientName = useRef()
   const ingredientAmount = useRef()
+  const instructionInfo = useRef()
   
   function handleEdit() {
     /**
-     * Toggles display of the 'add ingredient' element on/off.
+     * Toggles display of the 'add ingredient/instruction' elements on/off.
      */
     if (display === 'none') {
       setDisplay('block')
-      console.log('editing ingredients for ' + recipe.name)
+      console.log('editing ' + recipe.name)
     } else {
       setDisplay('none')
-      console.log('finished editing ingredients for ' + recipe.name)
+      console.log('finished editing ' + recipe.name)
       ingredientName.current.value = null
       ingredientAmount.current.value = null
+      instructionInfo.current.value = null
     }
 
   }
@@ -30,10 +32,18 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient }) 
      */
     const name = ingredientName.current.value
     const amount = ingredientAmount.current.value
-    console.log( `adding ${amount} ${name} to ${recipe.name}`)
+    if (name === '') return
+    console.log( `adding ingredient '${amount} ${name}' to ${recipe.name}`)
     addIngredient(recipe.id, name, amount)
     ingredientName.current.value = null
     ingredientAmount.current.value = null
+  }
+
+  function handleAddInstruction() {
+    const info = instructionInfo.current.value
+    console.log(`adding instruction '${info}' to ${recipe.name}`)
+    addInstruction(recipe.id, info)
+    instructionInfo.current.value = null
   }
 
   function handleKeyPress(event) {
@@ -44,6 +54,7 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient }) 
      */
     if (event.keyCode === 13 || event.which === 13) {
       handleAddIngredient()
+      handleAddInstruction()
     }
   }
 
@@ -59,6 +70,8 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient }) 
     <div className='large-font'>Instructions</div>
     <InstructionsList 
       recipe={recipe}
+      addInstruction={addInstruction}
+      removeInstruction={removeInstruction}
     />
     <div style={{display:display}}>
       <input 
@@ -75,6 +88,15 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient }) 
         onKeyPress={handleKeyPress}
       />
       <button onClick={handleAddIngredient}>+</button>
+    </div>
+    <div style={{display:display}}>
+      <input
+        type='text'
+        placeholder='Instruction'
+        ref={instructionInfo}
+        onKeyPress={handleKeyPress}
+      />
+      <button onClick={handleAddInstruction}>+</button>
     </div>
   </>
   )

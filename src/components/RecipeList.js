@@ -1,7 +1,8 @@
 import React from 'react'
 import Recipe from './Recipe'
 
-export default function RecipeList({ recipes, removeRecipe, addIngredient, removeIngredient }) {
+export default function RecipeList({ recipes, removeRecipe, addIngredient, removeIngredient, addInstruction, removeInstruction }) 
+  {
   return (
     // map each recipe from the 'recipes' array to a Recipe component.
     recipes.map(recipe => {
@@ -12,6 +13,8 @@ export default function RecipeList({ recipes, removeRecipe, addIngredient, remov
           removeRecipe={removeRecipe}
           addIngredient={addIngredient}
           removeIngredient={removeIngredient}
+          addInstruction={addInstruction}
+          removeInstruction={removeInstruction}
         />
       )
     })

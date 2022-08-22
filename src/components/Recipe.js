@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import RecipeInfo from './RecipeInfo'
 
-export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngredient }) {
+export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngredient, addInstruction, removeInstruction }) {
 
   const [ display, setDisplay ] = useState('none')
   const [ fontSize, setFontSize ] = useState('1em')
@@ -46,6 +46,8 @@ export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngr
             recipe={recipe} 
             addIngredient={addIngredient}
             removeIngredient={removeIngredient}
+            addInstruction={addInstruction}
+            removeInstruction={removeInstruction}
           />
         </div>
       </div>
