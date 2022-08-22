@@ -45,7 +45,7 @@ function App() {
       selected: false, 
       editing: false},
   ])
-  const [prevRecipes, setPrevRecipes] = useState([])
+  const [prevRecipes, setPrevRecipes] = useState(recipes)
   const recipeNameRef = useRef()
   const searchRef = useRef()
 
