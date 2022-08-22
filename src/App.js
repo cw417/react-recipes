@@ -4,14 +4,8 @@ import RecipeList from './components/RecipeList';
 import { v4 as uuidv4 } from 'uuid';
 import { FiPlus, FiSearch, FiRepeat, FiTrash2 } from "react-icons/fi";
 
-function App() {
-  
-  /**
-   * Recipes are objects with keys { id, name, ingredients, instructions, selected, false }.
-   * Ingredients is an array of objects with keys { id, name, amount }.
-   */
-  const [recipes, setRecipes] = useState([
-    {
+const initialState = 
+    [{
       id: uuidv4(), 
       name: "Caprese salad", 
       ingredients: [ 
@@ -43,8 +37,16 @@ function App() {
         {id: uuidv4(), instruction: "If you would like to add protein powder, do so while blending."},
       ], 
       selected: false, 
-      editing: false},
-  ])
+      editing: false
+    }]
+
+function App() {
+  
+  /**
+   * Recipes are objects with keys { id, name, ingredients, instructions, selected, false }.
+   * Ingredients is an array of objects with keys { id, name, amount }.
+   */
+  const [recipes, setRecipes] = useState(initialState)
   const [prevRecipes, setPrevRecipes] = useState(recipes)
   const recipeNameRef = useRef()
   const searchRef = useRef()
