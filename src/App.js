@@ -6,22 +6,43 @@ import { v4 as uuidv4 } from 'uuid';
 function App() {
   
   /**
-   * Recipes are objects with keys { id, name, ingredients, selected, false }.
+   * Recipes are objects with keys { id, name, ingredients, instructions, selected, false }.
    * Ingredients is an array of objects with keys { id, name, amount }.
    */
   const [recipes, setRecipes] = useState([
-    {id: uuidv4(), name: "Caprese salad", ingredients: [ 
-      {id: uuidv4(), name: "Tomatoes", amount: "2, sliced"},
-      {id: uuidv4(), name: "Mozzarella, fresh", amount: "4 slices"},
-      {id: uuidv4(), name: "Basil, fresh", amount: "8 leaves"},
-      {id: uuidv4(), name: "Olive oil", amount: "drizzle"},
-      {id: uuidv4(), name: "Salt/pepper", amount: "to taste"},
-      ], selected: false, editing: false},
-    {id: uuidv4(), name: "Strawberry Banana Smoothie", ingredients: [ 
-      {id: uuidv4(), name: "Bananas", amount: "2, peeled"},
-      {id: uuidv4(), name: "Strawberries", amount: "1/2 C"},
-      {id: uuidv4(), name: "Milk", amount: "6oz"},
-      ], selected: false, editing: false},
+    {
+      id: uuidv4(), 
+      name: "Caprese salad", 
+      ingredients: [ 
+        {id: uuidv4(), name: "Tomatoes", amount: "2, sliced"},
+        {id: uuidv4(), name: "Mozzarella, fresh", amount: "4 slices"},
+        {id: uuidv4(), name: "Basil, fresh", amount: "8 leaves"},
+        {id: uuidv4(), name: "Olive oil", amount: "drizzle"},
+        {id: uuidv4(), name: "Salt/pepper", amount: "to taste"},
+      ], 
+      instructions: [
+        {id: uuidv4(), instruction: "Slice tomatoes and mozzarella. Add to bowl."},
+        {id: uuidv4(), instruction: "Wash and chop the fresh basil, and add to bowl."},
+        {id: uuidv4(), instruction: "Add a drizzle of olive oil, then salt, and pepper to taste."},
+      ], 
+      selected: false, 
+      editing: false
+    },
+    {
+      id: uuidv4(), 
+      name: "Strawberry Banana Smoothie", 
+      ingredients: [ 
+        {id: uuidv4(), name: "Bananas", amount: "2, peeled"},
+        {id: uuidv4(), name: "Strawberries", amount: "1/2 C"},
+        {id: uuidv4(), name: "Milk", amount: "6oz"},
+      ], 
+      instructions: [
+        {id: uuidv4(), instruction: "Peel bananas and add all ingredients to blender."},
+        {id: uuidv4(), instruction: "Blend to desired consistency."},
+        {id: uuidv4(), instruction: "If you would like to add protein powder, do so while blending."},
+      ], 
+      selected: false, 
+      editing: false},
   ])
   const [prevRecipes, setPrevRecipes] = useState([])
   const recipeNameRef = useRef()
@@ -53,6 +74,7 @@ function App() {
           id: uuidv4(), 
           name: name, 
           ingredients: [],
+          instructions: [],
           selected: false,
           editing: false
         }

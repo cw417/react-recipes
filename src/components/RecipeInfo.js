@@ -1,5 +1,6 @@
 import React, { useState, useRef} from 'react'
 import IngredientsList from './IngredientsList'
+import InstructionsList from './InstructionsList'
 
 export default function RecipeInfo({ recipe, addIngredient, removeIngredient }) {
 
@@ -49,9 +50,15 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient }) 
   return (
   <>
     <button onClick={handleEdit} >Edit</button>
+    <div className='large-font'>Ingredients</div>
     <IngredientsList 
       recipe={recipe}
       removeIngredient={removeIngredient}
+    />
+    <br />
+    <div className='large-font'>Instructions</div>
+    <InstructionsList 
+      recipe={recipe}
     />
     <div style={{display:display}}>
       <input 

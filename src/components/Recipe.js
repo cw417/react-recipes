@@ -4,6 +4,7 @@ import RecipeInfo from './RecipeInfo'
 export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngredient }) {
 
   const [ display, setDisplay ] = useState('none')
+  const [ fontSize, setFontSize ] = useState('1em')
   
   function handleSelect() {
     /**
@@ -11,9 +12,11 @@ export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngr
      */
     if (display === 'none') {
       setDisplay('block')
+      setFontSize('2em')
       console.log('selected ' + recipe.name)
     } else {
       setDisplay('none')
+      setFontSize('1em')
       console.log('unselected ' + recipe.name)
     }
   }
@@ -28,8 +31,10 @@ export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngr
 
   return (
     <div>
-      <div>
-        {recipe.name}
+      <div> 
+        <span style={{fontSize:fontSize}}>
+          {recipe.name}
+        </span>
         <span className='pad-left'>
           <input type='checkbox' onClick={handleSelect} />
         </span>
