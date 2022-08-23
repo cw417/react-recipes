@@ -45,9 +45,11 @@ function App() {
   /**
    * Recipes are objects with keys { id, name, ingredients, instructions, selected, editing }.
    * Ingredients is an array of objects with keys { id, name, amount }.
+   * Instructions is an array of objects with keys { id, instruction }.
+   * prevRecipes will store the previous state of recipes when searching or clearing the list.
    */
-  const [recipes, setRecipes] = useState(initialState)
-  const [prevRecipes, setPrevRecipes] = useState(recipes)
+  const [ recipes, setRecipes ] = useState(initialState)
+  const [ prevRecipes, setPrevRecipes ] = useState(recipes)
   const recipeNameRef = useRef()
   const searchRef = useRef()
 
