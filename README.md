@@ -13,7 +13,8 @@ Feel free to try it out at: [https://cw417.github.io/react-recipes/](https://cw4
 * Users can enter a recipe name to add it to the list of recipes.
 * Once entered, the recipe will be displayed so that the user can select and edit each recipe individually.
 * Recipes can also be removed from the list via the ( X ) button to the right of the recipe name.
-* If a recipe is removed from the list, it is possible to restore it via the ( &#10227; ) button
+* The recipe list can be cleared via the ( &#128465; ) button.
+* If a recipe is removed from the list or the list is cleared, it is possible to restore it via the ( &#10227; ) button.
 * Recipes can be expanded via the checkbox to show their ingredients and instructions.
 * Once expanded, the user has access to the ( &#128393; ) button to toggle the editing controls.
 * Editing controls consist of:
