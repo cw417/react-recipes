@@ -5,7 +5,6 @@ import { FiX } from "react-icons/fi";
 export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngredient, addInstruction, removeInstruction }) {
 
   const [ display, setDisplay ] = useState('none')
-  const [ fontSize, setFontSize ] = useState('1.5em')
   
   function handleSelect() {
     /**
@@ -13,11 +12,9 @@ export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngr
      */
     if (display === 'none') {
       setDisplay('block')
-      setFontSize('2em')
       console.log('selected ' + recipe.name)
     } else {
       setDisplay('none')
-      setFontSize('1.5em')
       console.log('unselected ' + recipe.name)
     }
   }
@@ -33,11 +30,11 @@ export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngr
   return (
     <div className='m-2'>
       <div> 
-        <span className='' style={{fontSize:fontSize}}>
-          {recipe.name}
-        </span>
         <span className='pad-left'>
           <input className='chkbx' type='checkbox' onClick={handleSelect} />
+        </span>
+        <span className='text-2xl'>
+          {recipe.name}
         </span>
         <span className='pad-left'>
           <button className='btn' onClick={handleRemoveRecipe}><FiX /></button>
