@@ -244,8 +244,8 @@ function App() {
   }
 
   return (
-    <>
-      <div className='recipes flex flex-col items-center justify-center mx-32 my-12 rounded-3xl'>
+    <div className='flex flex-row items-center justify-center'>
+      <div className='recipes flex flex-col items-center justify-center rounded-3xl my-8 pb-8 pt-4 w-screen md:w-10/12'>
         <div className='items-center'>
           <div className='text-5xl text-center m-8'>
             Recipes
@@ -286,7 +286,7 @@ function App() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
