@@ -68,13 +68,7 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient, ad
     <IngredientsList 
       recipe={recipe}
       removeIngredient={removeIngredient}
-    />
-    <br />
-    <div className='text-2xl my-2'>Instructions</div>
-    <InstructionsList 
-      recipe={recipe}
-      addInstruction={addInstruction}
-      removeInstruction={removeInstruction}
+      display={display}
     />
     <div style={{display:display}}>
       <input 
@@ -92,6 +86,14 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient, ad
       />
       <button className='btn' onClick={handleAddIngredient}>+</button>
     </div>
+    <br />
+    <div className='text-2xl my-2'>Instructions</div>
+    <InstructionsList 
+      recipe={recipe}
+      addInstruction={addInstruction}
+      removeInstruction={removeInstruction}
+      display={display}
+    />
     <div style={{display:display}}>
       <input
         type='text'

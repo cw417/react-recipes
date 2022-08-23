@@ -1,7 +1,7 @@
 import React from 'react'
 import { FiMinus } from "react-icons/fi";
 
-export default function IngredientsList({ recipe, removeIngredient}) {
+export default function IngredientsList({ recipe, removeIngredient, display }) {
 
   function handleRemoveIngredient(recipeId, ingredientId) {
     /**
@@ -9,7 +9,7 @@ export default function IngredientsList({ recipe, removeIngredient}) {
      * @param {String} recipeId      UUID of recipe.
      * @param {String} ingredientId  UUID of ingredient.
      */
-    console.log(`removing ${ingredientId} from ${recipeId}`)
+    console.log(`removing ${ingredientId} from ${recipe.name}`)
     removeIngredient(recipeId, ingredientId)
   }
   
@@ -19,14 +19,15 @@ export default function IngredientsList({ recipe, removeIngredient}) {
       return (
         <div key={index}>
           <div className='flex flex-row'>
-            <span className='mx-4 text-left'>{ingredient.amount}</span>
-            <span className='inline-block align-middle'>{ingredient.name}</span>
             <span>
               <button 
                 className='btn'
+                style={{display:display}}
                 onClick={() => handleRemoveIngredient(recipe.id, ingredient.id)}
               ><FiMinus /></button>
             </span>
+            <span className='mx-4 text-left'>{ingredient.amount}</span>
+            <span className='inline-block align-middle'>{ingredient.name}</span>
           </div>
         </div>
       )
