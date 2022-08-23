@@ -26,8 +26,8 @@ export default function IngredientsList({ recipe, removeIngredient, display }) {
                 onClick={() => handleRemoveIngredient(recipe.id, ingredient.id)}
               ><FiMinus /></button>
             </span>
-            <span className='mx-4 text-left'>{ingredient.amount}</span>
-            <span className='inline-block align-middle'>{ingredient.name}</span>
+            <div className='w-1/6 mx-4 text-left'>{ingredient.amount}</div>
+            <div className='inline-block align-middle'>{ingredient.name}</div>
           </div>
         </div>
       )

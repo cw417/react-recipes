@@ -21,7 +21,7 @@ export default function InstructionsList({ recipe, removeInstruction, display })
             style={{display:display}}
             onClick={() => handleRemoveInstruction(recipe.id, instruction.id)}
           ><FiMinus /></button>
-          <span>{count}. {instruction.instruction}</span>
+          <span className='mx-4'>{count}. {instruction.instruction}</span>
         </div>
       )
     })
