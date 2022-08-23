@@ -43,7 +43,7 @@ const initialState =
 function App() {
   
   /**
-   * Recipes are objects with keys { id, name, ingredients, instructions, selected, false }.
+   * Recipes are objects with keys { id, name, ingredients, instructions, selected, editing }.
    * Ingredients is an array of objects with keys { id, name, amount }.
    */
   const [recipes, setRecipes] = useState(initialState)
@@ -211,6 +211,16 @@ function App() {
     setRecipes(newRecipes)
   }
 
+  function toggleEditing(id) {
+    /**
+     * Toggles the 'editing' attribute of the recipe object.
+     * @param {String} id  UUID of the recipe.
+     */
+    const newRecipes = [...recipes]
+    const recipe = newRecipes.find(recipe => recipe.id === id)
+    recipe.editing = !recipe.editing
+  }
+
   function handleSearch() {
     /**
      * Filters 'recipes' array based on matches from the 'searchRef' ref.
@@ -271,6 +281,7 @@ function App() {
               removeIngredient={removeIngredient}
               addInstruction={addInstruction}
               removeInstruction={removeInstruction}
+              toggleEditing={toggleEditing}
             />
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Recipe from './Recipe'
 
-export default function RecipeList({ recipes, removeRecipe, addIngredient, removeIngredient, addInstruction, removeInstruction }) 
+export default function RecipeList({ recipes, removeRecipe, addIngredient, removeIngredient, addInstruction, removeInstruction, toggleEditing }) 
   {
   return (
     // map each recipe from the 'recipes' array to a Recipe component.
@@ -15,6 +15,7 @@ export default function RecipeList({ recipes, removeRecipe, addIngredient, remov
           removeIngredient={removeIngredient}
           addInstruction={addInstruction}
           removeInstruction={removeInstruction}
+          toggleEditing={toggleEditing}
         />
       )
     })

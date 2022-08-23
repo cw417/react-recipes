@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import RecipeInfo from './RecipeInfo'
 import { FiX } from "react-icons/fi";
 
-export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngredient, addInstruction, removeInstruction }) {
+export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngredient, addInstruction, removeInstruction, toggleEditing }) {
 
   const [ display, setDisplay ] = useState('none')
   
@@ -49,6 +49,7 @@ export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngr
             removeIngredient={removeIngredient}
             addInstruction={addInstruction}
             removeInstruction={removeInstruction}
+            toggleEditing={toggleEditing}
           />
         </div>
       </div>

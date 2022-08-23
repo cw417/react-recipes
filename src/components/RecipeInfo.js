@@ -3,7 +3,7 @@ import IngredientsList from './IngredientsList'
 import InstructionsList from './InstructionsList'
 import { FiEdit2 } from "react-icons/fi";
 
-export default function RecipeInfo({ recipe, addIngredient, removeIngredient, addInstruction, removeInstruction }) {
+export default function RecipeInfo({ recipe, addIngredient, removeIngredient, addInstruction, removeInstruction, toggleEditing }) {
 
   const [ display, setDisplay ] = useState('none')
   const ingredientName = useRef()
@@ -16,9 +16,11 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient, ad
      */
     if (display === 'none') {
       setDisplay('block')
+      toggleEditing(recipe.id)
       console.log('editing ' + recipe.name)
     } else {
       setDisplay('none')
+      toggleEditing(recipe.id)
       console.log('finished editing ' + recipe.name)
       ingredientName.current.value = null
       ingredientAmount.current.value = null
