@@ -235,40 +235,35 @@ function App() {
 
   return (
     <>
-      <div className='container--app'>
-        <div className='container container--header'>
-          <div className='container--header__title'>
+      <div className='flex flex-col items-center justify-center'>
+        <div className='items-center'>
+          <div className='text-5xl text-center m-8'>
             Recipes
-          </div>
-          
-          <div className='container--header__addRecipe'>
-            <input 
-              placeholder='Recipe Name' 
-              type='text'
-              ref={recipeNameRef} 
-              onKeyPress={handleKeyPress}
-            />
-            <span className='pad-left' >
-              <button 
-                onClick={handleAddRecipe}
-              > <FiPlus /> </button>
-            </span>
-          </div>
-          <div>
-            <input type='text' placeholder='Search' ref={searchRef} />
-            <span className='pad-left'>
-              <button onClick={handleSearch}><FiSearch /></button>
-            </span>
           </div>
 
           <div>
-            <button onClick={handleRestore}><FiRepeat /></button>
-            <button onClick={handleClearAll}><FiTrash2 /></button>
+            <div className='flex items-center'>
+              <input placeholder='Recipe Name' type='text' ref={recipeNameRef} onKeyPress={handleKeyPress} />
+              <span className='pad-left' >
+                <button className='btn' onClick={handleAddRecipe}> <FiPlus /> </button>
+              </span>
+            </div>
+            <div className='flex items-center'>
+              <input type='text' placeholder='Search' ref={searchRef} />
+              <span className='pad-left'>
+                <button className='btn' onClick={handleSearch}><FiSearch /></button>
+              </span>
+            </div>
+          </div>
+
+          <div className='flex justify-center'>
+            <button className='btn' onClick={handleRestore}><FiRepeat /></button>
+            <button className='btn' onClick={handleClearAll}><FiTrash2 /></button>
           </div>
         </div>
 
         <div >
-          <div className='container'>
+          <div className='m-4'>
             <RecipeList
               recipes={recipes}
               removeRecipe={removeRecipe}

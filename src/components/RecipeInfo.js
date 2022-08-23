@@ -61,14 +61,14 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient, ad
 
   return (
   <>
-    <button onClick={handleEdit}><FiEdit2 /></button>
-    <div className='large-font'>Ingredients</div>
+    <button className='btn' onClick={handleEdit}><FiEdit2 /></button>
+    <div className='text-2xl my-2'>Ingredients</div>
     <IngredientsList 
       recipe={recipe}
       removeIngredient={removeIngredient}
     />
     <br />
-    <div className='large-font'>Instructions</div>
+    <div className='text-2xl my-2'>Instructions</div>
     <InstructionsList 
       recipe={recipe}
       addInstruction={addInstruction}
@@ -76,7 +76,7 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient, ad
     />
     <div style={{display:display}}>
       <input 
-        className='input--ingredientAmount' 
+        className='mr-2 w-20' 
         type='text' 
         placeholder='Amt'
         ref={ingredientAmount} 
@@ -88,7 +88,7 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient, ad
         ref={ingredientName} 
         onKeyPress={handleKeyPress}
       />
-      <button onClick={handleAddIngredient}>+</button>
+      <button className='btn' onClick={handleAddIngredient}>+</button>
     </div>
     <div style={{display:display}}>
       <input
@@ -97,7 +97,7 @@ export default function RecipeInfo({ recipe, addIngredient, removeIngredient, ad
         ref={instructionInfo}
         onKeyPress={handleKeyPress}
       />
-      <button onClick={handleAddInstruction}>+</button>
+      <button className='btn' onClick={handleAddInstruction}>+</button>
     </div>
   </>
   )

@@ -18,11 +18,12 @@ export default function IngredientsList({ recipe, removeIngredient}) {
     recipe.ingredients.map((ingredient, index) => {
       return (
         <div key={index}>
-          <div className='container--ingredients'>
-            <span className='span--amount'>{ingredient.amount}</span>
-            <span>{ingredient.name}</span>
-            <span className='pad-left'>
+          <div className='flex flex-row'>
+            <span className='mx-4 text-left'>{ingredient.amount}</span>
+            <span className='inline-block align-middle'>{ingredient.name}</span>
+            <span>
               <button 
+                className='btn'
                 onClick={() => handleRemoveIngredient(recipe.id, ingredient.id)}
               ><FiMinus /></button>
             </span>
