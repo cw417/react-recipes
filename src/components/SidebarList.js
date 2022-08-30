@@ -2,16 +2,8 @@ import React from 'react'
 
 export default function SidebarList({ recipes, prevRecipes, filterRecipes }) {
   
-  let filtered = false
-
   function handleFilterRecipes(id) {
     filterRecipes(id)
-    toggleFiltered()
-  }
-
-  function toggleFiltered() {
-    console.log(`filtered: ${filtered}`)
-    filtered = !filtered
   }
 
     return (

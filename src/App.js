@@ -51,6 +51,7 @@ function App() {
    */
   const [ recipes, setRecipes ] = useState(initialState)
   const [ prevRecipes, setPrevRecipes ] = useState(recipes)
+  const [ filtered, setFiltered ] = useState(false)
   const recipeNameRef = useRef()
   const searchRef = useRef()
 
@@ -122,9 +123,15 @@ function App() {
      * Filter recipe list to show only one recipe based on given id.
      * @param {String} id  UUID of recipe to display.
      */
-    storeRecipes()
+    console.log(`${filtered}`)
+    if (filtered) {restoreRecipes()}
     const newRecipes = recipes.filter(recipe => recipe.id === id)
     setRecipes(newRecipes)
+    toggleFiltered()
+  }
+
+  function toggleFiltered() {
+    setFiltered(!filtered)
   }
 
   function handleClearAll() {
@@ -263,6 +270,7 @@ function App() {
           recipes={recipes}
           prevRecipes={prevRecipes}
           filterRecipes={filterRecipes}
+          storeRecipes={storeRecipes}
           restoreRecipes={restoreRecipes}
         />
       </div>
