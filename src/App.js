@@ -134,8 +134,7 @@ function App() {
      * Filter recipe list to show only one recipe based on given id.
      * @param {String} id  UUID of recipe to display.
      */
-    console.log(`${filtered}`)
-    if (filtered) {restoreRecipes()} 
+    if (filtered) return 
     const newRecipes = recipes.filter(recipe => recipe.id === id)
     setRecipes(newRecipes)
     toggleFiltered()
@@ -261,6 +260,7 @@ function App() {
      * Sets 'recipes' array to filtered array.
      */
     storeRecipes()
+    if (!filtered) {toggleFiltered()}
     const query = searchRef.current.value.toLowerCase()
     const searchResults = recipes.filter(recipe => 
       recipe.name.toLowerCase().includes(query) || searchIngredients(query, recipe))
