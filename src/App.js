@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useRef, useEffect } from 'react'
 import RecipeList from './components/RecipeList';
+import Sidebar from './components/Sidebar';
 import { v4 as uuidv4 } from 'uuid';
 import { FiPlus, FiSearch, FiRepeat, FiTrash2 } from "react-icons/fi";
 
@@ -116,6 +117,16 @@ function App() {
     setRecipes(newRecipes)
   }
   
+  function filterRecipes(id) {
+    /**
+     * Filter recipe list to show only one recipe based on given id.
+     * @param {String} id  UUID of recipe to display.
+     */
+    storeRecipes()
+    const newRecipes = recipes.filter(recipe => recipe.id === id)
+    setRecipes(newRecipes)
+  }
+
   function handleClearAll() {
     /**
      * Stores current 'recipes' array in 'prevRecipes', then clears it.
@@ -247,7 +258,13 @@ function App() {
 
   return (
     <div className='flex flex-row items-center justify-center'>
-      <div className='recipes flex flex-col items-center justify-center rounded-3xl my-8 pb-8 pt-4 w-screen md:w-10/12'>
+      <div className='sidebar background-green flex-1 flex flex-col items-center justify-center' >
+        <Sidebar 
+          recipes={recipes}
+          filterRecipes={filterRecipes}
+        />
+      </div>
+      <div className='recipes background-green flex flex-col items-center justify-center'>
         <div className='items-center'>
           <div className='text-5xl text-center m-8'>
             Recipes

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background-yellow: #feffdf
+  --background-green: #97cba9;
+}
+
 body {
   background-color: #feffdf;
 }
@@ -19,6 +24,14 @@ input {
   @apply m-4 w-4 h-4 border border-gray-300 bg-white checked:bg-blue-500;
 }
 
-.recipes {
+.background-green {
   background-color: #97cba9;
+}
+
+.sidebar {
+  @apply rounded-3xl mx-4 pb-8 pt-4 w-screen text-center;
+}
+
+.recipes {
+  @apply rounded-3xl my-8 pb-8 pt-4 w-screen md:w-10/12;
 }
