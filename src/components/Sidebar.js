@@ -1,20 +1,23 @@
 import React from 'react'
+import SidebarList from './SidebarList';
+import { FiRepeat } from "react-icons/fi";
 
-export default function Sidebar({ recipes, filterRecipes }) {
+export default function Sidebar({ recipes, prevRecipes, filterRecipes, restoreRecipes }) {
 
-  function handleFilterRecipes(id) {
-    filterRecipes(id)
+  function handleRestoreRecipes() {
+    restoreRecipes()
   }
 
   return (
-    recipes.map((recipe, index) => {
-      return (
-        <div 
-          key={index}
-          className='py-2 px-2 hover:bg-blue-400 rounded-3xl'
-          onClick={() => handleFilterRecipes(recipe.id)}
-        >{recipe.name}</div>
-      )
-    })
+        <div >
+          <div>
+            <button className='btn' onClick={handleRestoreRecipes}><FiRepeat /></button>
+          </div>
+          <SidebarList
+            recipes={recipes}
+            prevRecipes={prevRecipes}
+            filterRecipes={filterRecipes}
+          />
+        </div>
   )
 }

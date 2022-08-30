@@ -261,7 +261,9 @@ function App() {
       <div className='sidebar background-green flex-1 flex flex-col items-center justify-center' >
         <Sidebar 
           recipes={recipes}
+          prevRecipes={prevRecipes}
           filterRecipes={filterRecipes}
+          restoreRecipes={restoreRecipes}
         />
       </div>
       <div className='recipes background-green flex flex-col items-center justify-center'>
