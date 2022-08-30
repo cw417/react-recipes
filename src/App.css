@@ -33,6 +33,6 @@ input {
 }
 
 .recipes {
-  @apply rounded-3xl my-8 pb-8 pt-4 w-screen md:w-10/12;
+  @apply rounded-3xl my-8 mr-4 pb-8 pt-4 w-screen md:w-10/12;
 }
 

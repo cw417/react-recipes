@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function SidebarList({ recipes, prevRecipes, filterRecipes }) {
+export default function SidebarList({ recipes, sidebarRecipes, filterRecipes }) {
   
   function handleFilterRecipes(id) {
     filterRecipes(id)
   }
 
     return (
-      prevRecipes.map((recipe, index) => {
+      sidebarRecipes.map((recipe, index) => {
         return (
           <div key={index}>
             <div 

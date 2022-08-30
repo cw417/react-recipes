@@ -51,6 +51,7 @@ function App() {
    */
   const [ recipes, setRecipes ] = useState(initialState)
   const [ prevRecipes, setPrevRecipes ] = useState(recipes)
+  const [ sidebarRecipes, setSidebarRecipes ] = useState(recipes)
   const [ filtered, setFiltered ] = useState(false)
   const recipeNameRef = useRef()
   const searchRef = useRef()
@@ -69,6 +70,14 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes))
   }, [recipes])
   
+  // only update sidebarRecipes if the current 'recipes' array is not in a filtered state
+  useEffect(() => {
+    console.log(`filtered: ${filtered}`)
+    if (!filtered) {
+      setSidebarRecipes(recipes)
+    }
+  }, [recipes, filtered])
+
   function handleAddRecipe() {
     /**
      * Gets name ref, then creates/adds a new object to the 'recipes' array.
@@ -105,6 +114,7 @@ function App() {
      */
     console.log('restoring recipes array from prevRecipes')
     setRecipes(prevRecipes)
+    if (filtered) toggleFiltered()
   }
 
   function removeRecipe(id) {
@@ -128,6 +138,7 @@ function App() {
     const newRecipes = recipes.filter(recipe => recipe.id === id)
     setRecipes(newRecipes)
     toggleFiltered()
+    storeRecipes()
   }
 
   function toggleFiltered() {
@@ -268,7 +279,7 @@ function App() {
       <div className='sidebar background-green flex-1 flex flex-col items-center justify-center' >
         <Sidebar 
           recipes={recipes}
-          prevRecipes={prevRecipes}
+          sidebarRecipes={sidebarRecipes}
           filterRecipes={filterRecipes}
           storeRecipes={storeRecipes}
           restoreRecipes={restoreRecipes}

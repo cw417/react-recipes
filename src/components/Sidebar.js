@@ -2,7 +2,7 @@ import React from 'react'
 import SidebarList from './SidebarList';
 import { FiRepeat } from "react-icons/fi";
 
-export default function Sidebar({ recipes, prevRecipes, filterRecipes, restoreRecipes }) {
+export default function Sidebar({ recipes, sidebarRecipes, filterRecipes, restoreRecipes }) {
 
   function handleRestoreRecipes() {
     restoreRecipes()
@@ -15,7 +15,7 @@ export default function Sidebar({ recipes, prevRecipes, filterRecipes, restoreRe
           </div>
           <SidebarList
             recipes={recipes}
-            prevRecipes={prevRecipes}
+            sidebarRecipes={sidebarRecipes}
             filterRecipes={filterRecipes}
           />
         </div>
