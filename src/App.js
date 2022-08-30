@@ -82,6 +82,7 @@ function App() {
     /**
      * Gets name ref, then creates/adds a new object to the 'recipes' array.
      */
+    if (filtered) { restoreRecipes() }
     const name = recipeNameRef.current.value
     if (name === '') return // if name is blank, do not add anything to array
     setRecipes(prev => {
@@ -134,7 +135,7 @@ function App() {
      * @param {String} id  UUID of recipe to display.
      */
     console.log(`${filtered}`)
-    if (filtered) {restoreRecipes()}
+    if (filtered) {restoreRecipes()} 
     const newRecipes = recipes.filter(recipe => recipe.id === id)
     setRecipes(newRecipes)
     toggleFiltered()
