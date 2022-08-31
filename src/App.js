@@ -275,6 +275,7 @@ function App() {
   return (
     <div className='flex flex-row items-center justify-center'>
       <div className='sidebar background-green flex-1 flex flex-col items-center justify-center' >
+        <div className='font-bold text-xl my-2 text-center'>Recipe Select</div>
         <Sidebar 
           sidebarRecipes={sidebarRecipes}
           filterRecipes={filterRecipes}
