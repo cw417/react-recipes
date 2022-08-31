@@ -53,6 +53,7 @@ function App() {
   const [ prevRecipes, setPrevRecipes ] = useState(recipes)
   const [ sidebarRecipes, setSidebarRecipes ] = useState(recipes)
   const [ filtered, setFiltered ] = useState(false)
+  const [ recipesLength, setRecipesLength ] = useState(recipes.length)
   const recipeNameRef = useRef()
   const searchRef = useRef()
 
@@ -78,6 +79,14 @@ function App() {
     }
   }, [recipes, filtered])
 
+  // if the recipe array length gets smaller ( on delete or filter), store recipes in prevRecipes
+  useEffect(() => {
+    if (recipes.length > recipesLength) {
+      setPrevRecipes(recipes)
+    }
+    setRecipesLength(recipes.length)
+  }, [recipes, recipesLength])
+
   function handleAddRecipe() {
     /**
      * Gets name ref, then creates/adds a new object to the 'recipes' array.
@@ -101,14 +110,6 @@ function App() {
     recipeNameRef.current.value = null
   }
 
-  function storeRecipes() {
-    /**
-     * Stores current 'recipes' array in 'prevRecipes' array.
-     */
-    console.log('storing current recipes array in prevRecipes')
-    setPrevRecipes(recipes)
-  }
-
   function restoreRecipes() {
     /**
      * Sets current 'recipes' array to 'prevRecipes' array.
@@ -124,7 +125,6 @@ function App() {
      * @param {String} id  UUID of recipe.
      * 
      */
-    storeRecipes()
     const newRecipes = recipes.filter(recipe => recipe.id !== id)
     setRecipes(newRecipes)
   }
@@ -138,7 +138,6 @@ function App() {
     const newRecipes = recipes.filter(recipe => recipe.id === id)
     setRecipes(newRecipes)
     toggleFiltered()
-    storeRecipes()
   }
 
   function toggleFiltered() {
@@ -149,7 +148,6 @@ function App() {
     /**
      * Stores current 'recipes' array in 'prevRecipes', then clears it.
      */
-    storeRecipes()
     console.log('clearing recipes array')
     setRecipes([])
   }
@@ -259,7 +257,6 @@ function App() {
      * Matches are case insensitive.
      * Sets 'recipes' array to filtered array.
      */
-    storeRecipes()
     if (!filtered) {toggleFiltered()}
     const query = searchRef.current.value.toLowerCase()
     const searchResults = recipes.filter(recipe => 
@@ -279,10 +276,8 @@ function App() {
     <div className='flex flex-row items-center justify-center'>
       <div className='sidebar background-green flex-1 flex flex-col items-center justify-center' >
         <Sidebar 
-          recipes={recipes}
           sidebarRecipes={sidebarRecipes}
           filterRecipes={filterRecipes}
-          storeRecipes={storeRecipes}
           restoreRecipes={restoreRecipes}
         />
       </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SidebarList({ recipes, sidebarRecipes, filterRecipes }) {
+export default function SidebarList({ sidebarRecipes, filterRecipes }) {
   
   function handleFilterRecipes(id) {
     filterRecipes(id)
