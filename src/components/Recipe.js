@@ -28,17 +28,19 @@ export default function Recipe({ recipe, removeRecipe, addIngredient, removeIngr
   }
 
   return (
-    <div className='m-2'>
-      <div> 
-        <span className='pad-left'>
-          <input className='chkbx' type='checkbox' onClick={handleSelect} />
-        </span>
-        <span className='text-2xl'>
-          {recipe.name}
-        </span>
-        <span className='pad-left'>
-          <button className='btn' onClick={handleRemoveRecipe}><FiX /></button>
-        </span>
+    <div className='my-6 cust-shadow rounded-xl p-8'>
+      <div>
+        <div className='flex flex-row items-center'>
+          <span className='pad-left'>
+            <input className='chkbx' type='checkbox' onClick={handleSelect} />
+          </span>
+          <span className='text-2xl'>
+            {recipe.name}
+          </span>
+          <span className='right'>
+            <button className='btn ' onClick={handleRemoveRecipe}><FiX /></button>
+          </span>
+        </div>
         <div 
           className=''
           style={{display:display}}

@@ -274,7 +274,7 @@ function App() {
 
   return (
     <div className='flex flex-row items-center justify-center'>
-      <div className='sidebar background-green flex-1 flex flex-col items-center justify-center' >
+      <div className='sidebar p-6 cust-shadow background-secondary flex flex-col items-center justify-center' >
         <div className='font-bold text-xl my-2 text-center'>Recipe Select</div>
         <Sidebar 
           sidebarRecipes={sidebarRecipes}
@@ -282,7 +282,7 @@ function App() {
           restoreRecipes={restoreRecipes}
         />
       </div>
-      <div className='recipes background-green flex flex-col items-center justify-center'>
+      <div className='recipes background-secondary cust-shadow flex flex-col items-center justify-center'>
         <div className='items-center'>
           <div className='text-5xl text-center m-8'>
             Recipes
