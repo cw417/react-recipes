@@ -27,11 +27,4 @@ Feel free to try it out at: [https://cw417.github.io/react-recipes/](https://cw4
 
 ## Examples
 
-Starting page:
-![](images/s1-closed.png)
-
-Recipe selected:
-![](images/s2-selected.png)
-
-Editing selected recipe:
-![](images/s3-editing.png)
+![](images/ss.png)
